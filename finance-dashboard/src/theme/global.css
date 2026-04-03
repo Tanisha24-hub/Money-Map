@@ -1,0 +1,10 @@
+.summary-container {
+  padding: 15px;
+}
+
+.summary-box {
+  background: white;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
