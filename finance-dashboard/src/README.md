@@ -40,7 +40,6 @@ I structured the project using reusable React components such as:
 State is managed using `useState`, and `useEffect` is used for storing data in local storage.  
 I focused on keeping the UI simple, interactive, and easy to use.
 
----
 
 ## ▶️ How to Run
 

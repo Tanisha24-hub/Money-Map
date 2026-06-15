@@ -1,20 +1,44 @@
 import { useState } from "react";
 
-function TransactionList({ records , role , addTransaction }) {
+function TransactionList({ records , role , addTransaction , deleteTransaction }) {
   const [query, setQuery] = useState("");
   const [typeFilter, setTypeFilter] = useState("all");
+  const [categoryFilter, setCategoryFilter] = useState("all");
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
 
   const visibleData = records.filter(item => {
+    const categoryMatch =
+     categoryFilter === "all"
+    ? true
+    : item.category === categoryFilter;
     const searchMatch = item.category
       .toLowerCase()
       .includes(query.toLowerCase());
 
     const typeMatch =
       typeFilter === "all" ? true : item.type === typeFilter;
+     console.log("Records:", records);
+     console.log("Count:", records.length);
+     const fromMatch =
+     !fromDate || item.date >= fromDate;
 
-    return searchMatch && typeMatch;
+      const toMatch =
+      !toDate || item.date <= toDate;
+     
+     return (
+            searchMatch &&
+            typeMatch &&
+            categoryMatch &&
+            fromMatch &&
+            toMatch
+);
   });
-
+  
+  const categories = [
+  "all",
+  ...new Set(records.map(item => item.category))
+   ];
   return (
     <div>
       <h2 style={{ color: "inherit"}}>
@@ -58,6 +82,37 @@ function TransactionList({ records , role , addTransaction }) {
         <option value="expense">Expense</option>
       </select>
 
+      <select
+  value={categoryFilter}
+  onChange={(e) => setCategoryFilter(e.target.value)}
+>
+    {categories.map(category => (
+    <option key={category} value={category}>
+      {category}
+    </option>
+      ))}
+     </select>
+
+     <br /><br />
+
+<label>From Date: </label>
+<input
+  type="date"
+  value={fromDate}
+  onChange={(e) => setFromDate(e.target.value)}
+/>
+
+<br /><br />
+
+<label>To Date: </label>
+<input
+  type="date"
+  value={toDate}
+  onChange={(e) => setToDate(e.target.value)}
+   />
+
+     <br /><br />
+
       {visibleData.length === 0 ? (
         <p style={{ color: "purple" }}>
            Oops! No matching transaction found🔍</p>
@@ -68,12 +123,14 @@ function TransactionList({ records , role , addTransaction }) {
           >
           <thead>
             <tr>
+              <th>ID</th>
               <th>Date</th>
               <th>Amount</th>
               <th>Category</th>
               <th>Type</th>
               <th>Note</th>
               <th>Payment Method</th>
+              <th>Action</th>
             </tr>
           </thead>
 
@@ -84,6 +141,7 @@ function TransactionList({ records , role , addTransaction }) {
                style={{ transition: "0.2s"}}
                onMouseOver={(e)=> (e.currentTarget.style.backgroundColor= "#4CAF50")}
                onMouseOut={(e)=>(e.currentTarget.style.backgroundColor= "transparent")}>
+                <td>{item.id}</td>
                
                 <td>{item.date}</td>
                 <td>₹{item.amount}</td>
@@ -104,6 +162,15 @@ function TransactionList({ records , role , addTransaction }) {
                 >
                   {item.type}
                 </td>
+                <td>
+                   {role === "admin" && (
+    <button
+      onClick={() => deleteTransaction(item.id)}
+    >
+      Delete
+    </button>
+                 )}
+                 </td>
             
               </tr>
             ))}
