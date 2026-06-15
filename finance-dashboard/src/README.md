@@ -18,16 +18,40 @@ It helps users track their daily expenses, manage transactions, and understand s
 - 💾 Data Persistence using Local Storage (data remains after refresh)
 - 📥 Export Data Feature (download transactions as JSON)
 - ✨ Smooth UI interactions (hover effects and transitions)
+- 📅 Date Range Filtering
+- 🏷️ Category Filtering
+- 🗑️ Delete Transactions (Admin Only)
+- 📊 CSV Export for Power BI Integration
+- 📈 Monthly Summary Dashboard
+- 📉 Expense Bar Chart Visualization
 
 ---
 
 ## 🛠️ Tech Stack
 
-- React (Vite)
+## 🛠️ Tech Stack
+
+- React.js
+- Vite
 - JavaScript (ES6)
-- CSS (inline styling + basic styling)
+- CSS
+- Recharts
+- Local Storage
+- Power BI
+- Git & GitHub
 
 ---
+
+## 📸 Screenshots
+
+### Dashboard Overview
+(Add Screenshot Here)
+
+### Expense Analytics
+(Add Screenshot Here)
+
+### Power BI Dashboard
+(Add Screenshot Here)
 
 ## 💡 My Approach
 
@@ -39,6 +63,16 @@ I structured the project using reusable React components such as:
 
 State is managed using `useState`, and `useEffect` is used for storing data in local storage.  
 I focused on keeping the UI simple, interactive, and easy to use.
+
+## 📊 Power BI Integration
+
+The transaction data can be exported as CSV and imported into Power BI for:
+
+- KPI Analysis
+- Income vs Expense Tracking
+- Category-wise Spending Analysis
+- Monthly Trends
+- Interactive Slicers and Filters
 
 
 ## ▶️ How to Run
