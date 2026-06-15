@@ -27,7 +27,6 @@ It helps users track their daily expenses, manage transactions, and understand s
 
 ---
 
-## 🛠️ Tech Stack
 
 ## 🛠️ Tech Stack
 
@@ -42,16 +41,6 @@ It helps users track their daily expenses, manage transactions, and understand s
 
 ---
 
-## 📸 Screenshots
-
-### Dashboard Overview
-(Add Screenshot Here)
-
-### Expense Analytics
-(Add Screenshot Here)
-
-### Power BI Dashboard
-(Add Screenshot Here)
 
 ## 💡 My Approach
 
